@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZENITH // MISSION CONTROL</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-grid"></div>
+
+    <div id="app-container">
+        <!-- Top Navigation -->
+        <header>
+            <div class="logo">ZENITH</div>
+            <div class="system-status">
+                <div class="status-item">NETWORK: <span>SECURE</span></div>
+                <div class="status-item">UPTIME: <span id="uptime">00:00:00</span></div>
+                <div class="status-item">SWARM HIVE: <span id="agent-count">0</span> ACTIVE</div>
+            </div>
+        </header>
+
+        <!-- Left Sidebar: The Hive (Agent Management) -->
+        <aside id="hive-sidebar">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>SWARM HIVE</h2>
+                <div style="font-size: 10px; color: var(--cyan); opacity: 0.5;">DEPLYING AGENTS...</div>
+            </div>
+            <div id="agent-list">
+                <!-- Agents will be injected here -->
+            </div>
+        </aside>
+
+        <!-- Main Display: Mission Orchestration Tree -->
+        <main>
+            <div class="mission-canvas-container">
+                <div style="position: absolute; top: 20px; left: 20px; z-index: 5;">
+                    <h2 style="font-family: var(--font-heading); font-size: 16px; color: var(--cyan);">MISSION TOPOLOGY</h2>
+                    <div style="font-size: 10px; opacity: 0.6;">REAL-TIME OBJECTIVE DECOMPOSITION</div>
+                </div>
+                <svg id="mission-svg">
+                    <!-- Mission nodes and links will be rendered here -->
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+        </main>
+
+        <!-- Right Sidebar: Telemetry & Vitals -->
+        <aside id="telemetry-sidebar">
+            <h2 style="font-family: var(--font-heading); font-size: 14px; letter-spacing: 3px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">TELEMETRY</h2>
+            
+            <div class="vitals-meter">
+                <div class="meter-label"><span>NEURAL BURST</span><span id="burst-val">45%</span></div>
+                <div class="meter-bar-bg"><div id="burst-bar" class="meter-bar-fill"></div></div>
+            </div>
+
+            <div class="vitals-meter">
+                <div class="meter-label"><span>TOKENS / SEC</span><span id="token-val">128</span></div>
+                <div class="meter-bar-bg"><div id="token-bar" class="meter-bar-fill" style="width: 60%"></div></div>
+            </div>
+
+            <div class="vitals-meter">
+                <div class="meter-label"><span>HIVE COHESION</span><span id="cohesion-val">98%</span></div>
+                <div class="meter-bar-bg"><div id="cohesion-bar" class="meter-bar-fill" style="width: 98%; background: var(--blue);"></div></div>
+            </div>
+
+            <div style="margin-top: auto; border: 1px solid var(--glass-border); border-radius: 10px; padding: 15px; background: rgba(0,0,0,0.2);">
+                <div style="font-size: 10px; opacity: 0.5; margin-bottom: 10px;">ACTIVE OBJECTIVE</div>
+                <div id="active-mission-label" style="font-size: 14px; font-weight: bold; color: var(--cyan);">INITIALIZING COMMANDER...</div>
+            </div>
+        </aside>
+
+        <!-- Bottom Panel: Command Terminal -->
+        <section id="comm-panel">
+            <div id="log-container">
+                <div class="log-entry"><span>[SYS]</span> Zenith Core online. Standing by for high-level directives.</div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="command-input" placeholder="Deploy new mission or issue directive..." autocomplete="off">
+                <button id="send-btn">EXECUTE</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
